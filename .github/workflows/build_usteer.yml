@@ -45,6 +45,7 @@ jobs:
         run: |
           cd ${{ env.SDK_DIR }}
           # 编译 usteer 包
+          make defconfig
           make -j$(nproc) V=s package/usteer/compile
 
       - name: Upload IPK and logs as artifacts
