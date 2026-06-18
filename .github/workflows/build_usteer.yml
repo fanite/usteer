@@ -48,7 +48,7 @@ jobs:
           cd ${{ env.SDK_DIR }}
           # 编译 usteer 包
           make defconfig
-          make -j$(nproc) V=s package/feeds/usteerng/usteer/compile
+          make -j$(nproc) V=s package/feeds/usteerng/openwrt/usteer/compile  #feeds/usteerng/openwrt/usteer
 
       - name: Upload IPK and logs as artifacts
         if: always() # 无论编译成功与否，都上传产物和日志
