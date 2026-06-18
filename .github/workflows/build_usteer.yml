@@ -14,9 +14,7 @@ jobs:
         # 定义目标架构和对应的 SDK 下载路径
         # 你可以根据需要增减或修改这里的架构
         target:
-          - { arch: "x86_64", sdk_path: "x86/64" }
           - { arch: "mipsel_24kc", sdk_path: "ramips/mt7621" } # 常用于 MT7621 设备
-          - { arch: "arm_cortex-a7", sdk_path: "sunxi/cortexa7" }
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
