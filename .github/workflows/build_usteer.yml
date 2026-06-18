@@ -38,15 +38,17 @@ jobs:
           # 注意：usteer 在 OpenWrt 的 packages feed 中，通常无需额外添加。
           # 但如果需要直接从仓库拉取最新源码，可以取消下面一行的注释：
           # echo 'src-git usteer https://git.openwrt.org/feed/packages.git' >> feeds.conf.default
+          echo 'src-git usteerng https://github.com/openwrt/usteer.git' >> feeds.conf.default
           ./scripts/feeds update -a
-          ./scripts/feeds install usteer
+          ./scripts/feeds install usteerng
+          ls -al
 
       - name: Compile usteer IPK
         run: |
           cd ${{ env.SDK_DIR }}
           # 编译 usteer 包
           make defconfig
-          make -j$(nproc) V=s package/usteer/compile
+          make -j$(nproc) V=s package/feeds/usteerng/usteer/compile
 
       - name: Upload IPK and logs as artifacts
         if: always() # 无论编译成功与否，都上传产物和日志
